@@ -1,4 +1,5 @@
 <?php
+require_once 'PHPUnit/Autoload.php';
 /*
  * This file is part of Composer.
  *
