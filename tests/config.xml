@@ -1,0 +1,7 @@
+<phpunit bootstrap="../bootstrap.php">
+  <testsuites>
+    <testsuite name="adfc-tempo30-backend">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
