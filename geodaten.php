@@ -40,11 +40,9 @@ while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
       $again=",";
 }
 
-$point0= 'ST_GeometryFromText( \'POINT ( '.$lon.' '.$lat.' )\', 0)';
-
 print '],"laerm_tag":[';
 
-$query = 'SELECT klasse FROM laerm_tag WHERE ST_Within('. $point0 .', wkb_geometry);';
+$query = 'SELECT klasse FROM laerm_tag WHERE ST_Within('. $point .', wkb_geometry);';
 $result = pg_query($con, $query);
 
 if (!$result)  {
@@ -59,7 +57,7 @@ while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
 
 print '],"laerm_nacht":[';
 
-$query = 'SELECT klasse FROM laerm_nacht WHERE ST_Within('. $point0 .', wkb_geometry);';
+$query = 'SELECT klasse FROM laerm_nacht WHERE ST_Within('. $point .', wkb_geometry);';
 $result = pg_query($con, $query);
 
 if (!$result)  {
