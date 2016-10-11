@@ -33,7 +33,7 @@ function queryToArray($section, $query ) {
 	 header("HTTP/1.0 500 Internal Server Error on query ".$section);
          die("queryToArray". $query. $section);
     } 
-    $rtn[$section]= pg_fetch_all($result, NULL, PGSQL_ASSOC);
+    $rtn[$section]= pg_fetch_all($result);
 }
 
 $query = 'SELECT bemerkung,  region,  pk, vd , p.polizeirev, name, strasse, plz, ort, tel FROM PKGrenzen g, polizei p WHERE p.polizeirev=g.polizeirev and ST_Within('.$point.', wkb_geometry);';
