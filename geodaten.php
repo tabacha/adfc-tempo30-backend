@@ -17,7 +17,7 @@ $lat = filter_input(INPUT_GET, 'lat',FILTER_VALIDATE_FLOAT);
 $lon = filter_input(INPUT_GET, 'lon',FILTER_VALIDATE_FLOAT);
 
 if (!(($lat) && ($lon))) {
-   echo 'WRONG INPUT';
+   die('WRONG INPUT');
    exit;
 };
 
