@@ -1,6 +1,17 @@
 <?php
 header("access-control-allow-origin: *");
 
+function radiusQuery($geom, $point, $radius) {
+   return 'ST_Within('. $geom. ', ST_Transform(ST_Buffer(ST_Transform('.$point.', 3857), '.$radius.'), 4326))';
+}
+
+function distanceExpr($geom1, $geom2) {
+   return 'ST_Distance(ST_Transform('.$geom1.', 3857),ST_Transform('.geom2.',3857))';
+}
+
+function queryMaxValue($attr, $table, $geom, $point, $radius) {
+   return 'SELECT MAX('. $attr.') FROM '.$table.' WHERE ST_Distance(ST_Transform('.$point.', 3857) , ST_Transform('.$geom.', 3857)) < '.$radius;
+}
 $lat = filter_input(INPUT_GET, 'lat',FILTER_VALIDATE_FLOAT);
 $lon = filter_input(INPUT_GET, 'lon',FILTER_VALIDATE_FLOAT);
 
@@ -42,7 +53,7 @@ while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
 
 print '],"laerm_tag":[';
 
-$query = 'SELECT klasse FROM laerm_tag WHERE ST_Within('. $point .', wkb_geometry);';
+$query = queryMaxValue('klasse','laerm_tag', $point , 'wkb_geometry',25);
 $result = pg_query($con, $query);
 
 if (!$result)  {
@@ -57,7 +68,7 @@ while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
 
 print '],"laerm_nacht":[';
 
-$query = 'SELECT klasse FROM laerm_nacht WHERE ST_Within('. $point .', wkb_geometry);';
+$query = queryMaxValue('klasse','laerm_nacht', $point , 'wkb_geometry',25);
 $result = pg_query($con, $query);
 
 if (!$result)  {
@@ -77,7 +88,7 @@ print '],"luftdaten":[';
 $radius = 500;
 
 
-$query = 'SELECT gid, name_12, no2_i1_gb, pm10_i1_gb, pm25_i1_gb,ST_AsText( geom), ST_Distance(ST_Transform('.$point.', 3857),ST_Transform(geom,3857)) FROM luftdaten2015 WHERE ST_Within(geom, ST_Transform(ST_Buffer(ST_Transform('.$point.', 3857), '.$radius.'), 4326)) AND ((no2_i1_gb!=0) OR (pm10_i1_gb!=0) OR (pm25_i1_gb!=0)) ORDER BY st_distance;';
+$query = 'SELECT gid, name_12, no2_i1_gb, pm10_i1_gb, pm25_i1_gb,ST_AsText( geom), '.distanceExpr($point,'geom').' FROM luftdaten2015 WHERE ' . radiusQuery('geom',$point, $radius). ' AND ((no2_i1_gb!=0) OR (pm10_i1_gb!=0) OR (pm25_i1_gb!=0)) ORDER BY st_distance;';
 
 $result = pg_query($con, $query);
 
