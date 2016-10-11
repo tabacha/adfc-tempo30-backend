@@ -44,11 +44,19 @@ $query = 'SELECT bezirk_name, stadtteil, ortsteilnummer, bezirk FROM verwaltungs
 queryToArray('ort', $query);
 
 $radius=25;
-$query = queryMaxValue('klasse','laerm_tag', $point , 'wkb_geometry',$radius);
+$query = queryMaxValue('klasse', 'laerm_tag', $point , 'wkb_geometry', $radius);
 queryToArray('laerm_tag', $query);
 
-$query = queryMaxValue('klasse','laerm_nacht', $point , 'wkb_geometry',$radius);
+$query = queryMaxValue('klasse', 'laerm_nacht', $point , 'wkb_geometry', $radius);
 queryToArray('laerm_nacht', $query);
+
+if ( $rtn['laerm_tag'][0]['klasse'] == null) {
+    $rtn['laerm_tag']=array();
+}
+
+if ( $rtn['laerm_nacht'][0]['klasse'] == null) {
+    $rtn['laerm_nacht']=array();
+}
 
 $radius = 500;
 $query = 'SELECT gid, name_12, no2_i1_gb, pm10_i1_gb, pm25_i1_gb,ST_AsText( geom), '.distanceExpr($point,'geom').' FROM luftdaten2015 WHERE ' . radiusQuery('geom',$point, $radius). ' AND ((no2_i1_gb!=0) OR (pm10_i1_gb!=0) OR (pm25_i1_gb!=0)) ORDER BY st_distance;';
