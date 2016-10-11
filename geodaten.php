@@ -6,11 +6,11 @@ function radiusQuery($geom, $point, $radius) {
 }
 
 function distanceExpr($geom1, $geom2) {
-   return 'ST_Distance(ST_Transform('.$geom1.', 3857),ST_Transform('.geom2.',3857))';
+   return 'ST_Distance(ST_Transform('.$geom1.', 3857),ST_Transform('.$geom2.',3857))';
 }
 
 function queryMaxValue($attr, $table, $geom, $point, $radius) {
-   return 'SELECT MAX('. $attr.') FROM '.$table.' WHERE ST_Distance(ST_Transform('.$point.', 3857) , ST_Transform('.$geom.', 3857)) < '.$radius;
+   return 'SELECT MAX('. $attr.') AS "'.$attr.'" FROM '.$table.' WHERE ST_Distance(ST_Transform('.$point.', 3857) , ST_Transform('.$geom.', 3857)) < '.$radius;
 }
 $lat = filter_input(INPUT_GET, 'lat',FILTER_VALIDATE_FLOAT);
 $lon = filter_input(INPUT_GET, 'lon',FILTER_VALIDATE_FLOAT);
