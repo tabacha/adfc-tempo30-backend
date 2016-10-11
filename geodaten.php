@@ -30,8 +30,9 @@ function queryToArray($section, $query ) {
     global $rtn, $con;
     $result = pg_query($con, $query);
     if (!$result)  {
-	 header("HTTP/1.0 500 Internal Server Error on query ".$section);
-         die("queryToArray". $query. $section);
+	 header("HTTP/1.0 500 Internal Server Error on query: ".$section);
+	 die("Internal Server Error in function queryToArray<br>query:". $query. "<br>section:". $section);
+
     } 
     $rtn[$section]= pg_fetch_all($result);
 }
@@ -42,10 +43,11 @@ queryToArray('polizei', $query);
 $query = 'SELECT bezirk_name, stadtteil, ortsteilnummer, bezirk FROM verwaltungsgrenzen WHERE ST_Within('. $point .', wkb_geometry);';
 queryToArray('ort', $query);
 
-$query = queryMaxValue('klasse','laerm_tag', $point , 'wkb_geometry',25);
+$radius=25;
+$query = queryMaxValue('klasse','laerm_tag', $point , 'wkb_geometry',$radius);
 queryToArray('laerm_tag', $query);
 
-$query = queryMaxValue('klasse','laerm_nacht', $point , 'wkb_geometry',25);
+$query = queryMaxValue('klasse','laerm_nacht', $point , 'wkb_geometry',$radius);
 queryToArray('laerm_nacht', $query);
 
 $radius = 500;
