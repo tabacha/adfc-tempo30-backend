@@ -31,7 +31,7 @@ if (!$result)  {
                   echo "An error occured.\n";
 		  exit;
 }
-$rtn['polizei']= pg_fetch_array($result, NULL, PGSQL_ASSOC);
+$rtn['polizei']= pg_fetch_all($result, NULL, PGSQL_ASSOC);
 
 $query = 'SELECT bezirk_name, stadtteil, ortsteilnummer, bezirk FROM verwaltungsgrenzen WHERE ST_Within('. $point .', wkb_geometry);';
 $result = pg_query($con, $query);
@@ -43,7 +43,7 @@ if (!$result)  {
 		  exit;
 }
 
-$rtn['ort']= pg_fetch_array($result, NULL, PGSQL_ASSOC);
+$rtn['ort']= pg_fetch_all($result, NULL, PGSQL_ASSOC);
 
 
 $query = queryMaxValue('klasse','laerm_tag', $point , 'wkb_geometry',25);
@@ -54,7 +54,7 @@ if (!$result)  {
 		  exit;
 }
 
-$rtn['laerm_tag']= pg_fetch_array($result, NULL, PGSQL_ASSOC);
+$rtn['laerm_tag']= pg_fetch_all($result, NULL, PGSQL_ASSOC);
 
 $query = queryMaxValue('klasse','laerm_nacht', $point , 'wkb_geometry',25);
 $result = pg_query($con, $query);
@@ -63,7 +63,7 @@ if (!$result)  {
                   echo "An error occured.\n";
 		  exit;
 }
-$rtn['laerm_nacht']= pg_fetch_array($result, NULL, PGSQL_ASSOC);
+$rtn['laerm_nacht']= pg_fetch_all($result, NULL, PGSQL_ASSOC);
 
 $radius = 500;
 
@@ -76,7 +76,7 @@ if (!$result)  {
 		  exit;
 }
 
-$rtn['luftdaten']= pg_fetch_array($result, NULL, PGSQL_ASSOC);
+$rtn['luftdaten']= pg_fetch_all($result, NULL, PGSQL_ASSOC);
 
 print  json_encode($rtn);
 
