@@ -23,6 +23,7 @@ if (!(($lat) && ($lon))) {
 $point= 'ST_GeometryFromText( \'POINT ( '.$lon.' '.$lat.' )\', 4326)';
 $con=pg_connect("dbname=gis") or print("cant connect");
 
+$rtn=array();
 $query = 'SELECT bemerkung,  region,  pk, vd , p.polizeirev, name, strasse, plz, ort, tel FROM PKGrenzen g, polizei p WHERE p.polizeirev=g.polizeirev and ST_Within('.$point.', wkb_geometry);';
 $result = pg_query($con, $query);
 
@@ -30,28 +31,20 @@ if (!$result)  {
                   echo "An error occured.\n";
 		  exit;
 }
-print '{"polizei":[';
-$again="";
-while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
-      print $again . json_encode($row);
-      $again=",";
-}
+$rtn['polizei']= pg_fetch_array($result, NULL, PGSQL_ASSOC);
 
-print '],"ort":[';
 $query = 'SELECT bezirk_name, stadtteil, ortsteilnummer, bezirk FROM verwaltungsgrenzen WHERE ST_Within('. $point .', wkb_geometry);';
 $result = pg_query($con, $query);
+
+
 
 if (!$result)  {
                   echo "An error occured.\n";
 		  exit;
 }
-$again="";
-while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
-      print $again . json_encode($row);
-      $again=",";
-}
 
-print '],"laerm_tag":[';
+$rtn['ort']= pg_fetch_array($result, NULL, PGSQL_ASSOC);
+
 
 $query = queryMaxValue('klasse','laerm_tag', $point , 'wkb_geometry',25);
 $result = pg_query($con, $query);
@@ -60,13 +53,8 @@ if (!$result)  {
                   echo "An error occured.\n";
 		  exit;
 }
-$again="";
-while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
-      print $again . json_encode($row);
-      $again=",";
-}
 
-print '],"laerm_nacht":[';
+$rtn['laerm_tag']= pg_fetch_array($result, NULL, PGSQL_ASSOC);
 
 $query = queryMaxValue('klasse','laerm_nacht', $point , 'wkb_geometry',25);
 $result = pg_query($con, $query);
@@ -75,18 +63,9 @@ if (!$result)  {
                   echo "An error occured.\n";
 		  exit;
 }
-$again="";
-while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
-      print $again . json_encode($row);
-      $again=",";
-}
-
-
-
-print '],"luftdaten":[';
+$rtn['laerm_nacht']= pg_fetch_array($result, NULL, PGSQL_ASSOC);
 
 $radius = 500;
-
 
 $query = 'SELECT gid, name_12, no2_i1_gb, pm10_i1_gb, pm25_i1_gb,ST_AsText( geom), '.distanceExpr($point,'geom').' FROM luftdaten2015 WHERE ' . radiusQuery('geom',$point, $radius). ' AND ((no2_i1_gb!=0) OR (pm10_i1_gb!=0) OR (pm25_i1_gb!=0)) ORDER BY st_distance;';
 
@@ -96,13 +75,9 @@ if (!$result)  {
                   echo "An error occured.\n";
 		  exit;
 }
-$again="";
-while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
-      print $again . json_encode($row);
-      $again=",";
-}
 
+$rtn['luftdaten']= pg_fetch_array($result, NULL, PGSQL_ASSOC);
 
-print  "]}";
+print  json_encode($rtn);
 
 pg_close($con);
