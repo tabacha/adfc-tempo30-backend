@@ -1,5 +1,4 @@
 <?php
-header("access-control-allow-origin: *");
 
 function radiusQuery($geom, $point, $radius) {
    return 'ST_Within('. $geom. ', ST_Transform(ST_Buffer(ST_Transform('.$point.', 3857), '.$radius.'), 4326))';
