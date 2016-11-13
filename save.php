@@ -49,7 +49,7 @@ if ($res) {
 if ($res) {
      echo "OK $id\n";
      if ($sql['email']) {
-       $url='https://tools.adfc-hamburg.de/tempo30/master/validate.php?id='.$id."&secret=".$sql['secret'];
+       $url='https://tools.adfc-hamburg.de/tempo30-backend/master/validate.php?id='.$id."&secret=".$sql['secret'];
       $header = 'From: webmaster@tools.adfc-hamburg.de' . "\n" .
        'Reply-To: laeuft@hamburg.adfc.de' . "\n" .
        'X-Mailer: PHP/' . phpversion();
