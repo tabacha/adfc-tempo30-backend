@@ -11,6 +11,7 @@ function random_password( $length = 8 ) {
 $sql['newsletter']=filter_input(INPUT_POST, 'newsletter',FILTER_VALIDATE_BOOLEAN);
 $sql['saveanschrift']= filter_input(INPUT_POST, 'saveAnschrift',FILTER_VALIDATE_BOOLEAN);
 $sql['showinmap']=filter_input(INPUT_POST, 'showInMap',FILTER_VALIDATE_BOOLEAN);
+$sql['mailcontact']=filter_input(INPUT_POST, 'mailContact',FILTER_VALIDATE_BOOLEAN);
 $sql['nolimit']=filter_input(INPUT_POST, 'noLimit',FILTER_VALIDATE_BOOLEAN);
 $sql['name']=filter_input(INPUT_POST, 'name',FILTER_UNSAFE_RAW);
 $sql['strasse']=filter_input(INPUT_POST, 'strasse',FILTER_UNSAFE_RAW);
