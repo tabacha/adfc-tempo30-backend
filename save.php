@@ -16,6 +16,7 @@ $sql['nolimit']=filter_input(INPUT_POST, 'noLimit',FILTER_VALIDATE_BOOLEAN);
 $sql['name']=filter_input(INPUT_POST, 'name',FILTER_UNSAFE_RAW);
 $sql['strasse']=filter_input(INPUT_POST, 'strasse',FILTER_UNSAFE_RAW);
 $sql['plz']=filter_input(INPUT_POST, 'plz',FILTER_SANITIZE_STRING);
+$sql['hausnr']=filter_input(INPUT_POST, 'hausnr',FILTER_SANITIZE_STRING);
 $sql['email']=filter_input(INPUT_POST, 'email',FILTER_VALIDATE_EMAIL);
 $sql['bezirk']=filter_input(INPUT_POST, 'bezirk',FILTER_SANITIZE_STRING);
 $sql['antrag_strasse']=filter_input(INPUT_POST, 'antrag_strasse',FILTER_UNSAFE_RAW);
