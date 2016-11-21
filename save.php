@@ -58,7 +58,7 @@ if ($res) {
        $headers .= "Content-Transfer-Encoding: 8bit\n";
        $headers .= "\n";
 
-      $nachricht = "Sie haben auf hamburg.adfc.de einen Tempo30 Antrag gestellt. Bitte bestaetigen Sie Ihre E-Mail indem Sie auf folgenden Link clicken:\n".$url."\nSollten Sie nicht diesen Antrag gestellt haben, ignorieren Sie bitte diese E.-Mail. Fuer Rueckfragen stehen wir Ihnen gerne zur Verfuegung.\n\nIhr ADFC Hamburg";
+      $nachricht = "Sie haben auf hamburg.adfc.de einen Tempo-30-Antrag gestellt. Bitte bestätigen Sie Ihre E-Mail-Adresse, indem Sie auf folgenden Link Klicken.:\n".$url".\nSollten Sie diesen Antrag nicht gestellt haben, ignorieren Sie bitte diese E-Mail. Für Rückfragen stehen wir Ihnen gerne zur Verfügung.\n\nIhr ADFC Hamburg";
           mail($sql['email'], 'Ihr Tempo30 Antrag', $nachricht, $header);
      };
 } else {
