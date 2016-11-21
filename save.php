@@ -54,12 +54,12 @@ if ($res) {
        $url='https://tools.adfc-hamburg.de/tempo30-backend/master/validate.php?id='.$id."&secret=".$sql['secret'];
       $header = 'From: webmaster@tools.adfc-hamburg.de' . "\n" .
        'Reply-To: laeuft@hamburg.adfc.de' . "\n" .
-       'X-Mailer: PHP/' . phpversion();
-       $headers .= "Content-Type: text/plain; charset = \"UTF-8\";\n";
-       $headers .= "Content-Transfer-Encoding: 8bit\n";
-       $headers .= "\n";
+       'X-Mailer: PHP/' . phpversion(). "\n";
+       $header .= "Content-Type: text/plain; charset = \"UTF-8\";\n";
+       $header .= "Content-Transfer-Encoding: 8bit\n";
+       $header .= "\n";
 
-      $nachricht = "Sie haben auf hamburg.adfc.de einen Tempo-30-Antrag gestellt. Bitte bestaetigen Sie Ihre E-Mail-Adresse, indem Sie auf folgenden Link Klicken.:\n".$url."\nSollten Sie diesen Antrag nicht gestellt haben, ignorieren Sie bitte diese E-Mail. Fuer Rueckfragen stehen wir Ihnen gerne zur Verfuegung.\n\nIhr ADFC Hamburg";
+      $nachricht = "Sie haben auf hamburg.adfc.de einen Tempo-30-Antrag gestellt. Bitte bestätigen Sie Ihre E-Mail-Adresse, indem Sie auf folgenden Link Klicken.:\n".$url."\nSollten Sie diesen Antrag nicht gestellt haben, ignorieren Sie bitte diese E-Mail. Für Rückfragen stehen wir Ihnen gerne zur Verfügung.\n\nIhr ADFC Hamburg";
           mail($sql['email'], 'Ihr Tempo30 Antrag', $nachricht, $header);
      };
 } else {
