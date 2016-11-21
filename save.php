@@ -16,6 +16,7 @@ $sql['nolimit']=filter_input(INPUT_POST, 'noLimit',FILTER_VALIDATE_BOOLEAN);
 $sql['name']=filter_input(INPUT_POST, 'name',FILTER_UNSAFE_RAW);
 $sql['strasse']=filter_input(INPUT_POST, 'strasse',FILTER_UNSAFE_RAW);
 $sql['plz']=filter_input(INPUT_POST, 'plz',FILTER_SANITIZE_STRING);
+$sql['hausnr']=filter_input(INPUT_POST, 'hausnr',FILTER_SANITIZE_STRING);
 $sql['email']=filter_input(INPUT_POST, 'email',FILTER_VALIDATE_EMAIL);
 $sql['bezirk']=filter_input(INPUT_POST, 'bezirk',FILTER_SANITIZE_STRING);
 $sql['antrag_strasse']=filter_input(INPUT_POST, 'antrag_strasse',FILTER_UNSAFE_RAW);
@@ -58,7 +59,7 @@ if ($res) {
        $headers .= "Content-Transfer-Encoding: 8bit\n";
        $headers .= "\n";
 
-      $nachricht = "Sie haben auf hamburg.adfc.de einen Tempo30 Antrag gestellt. Bitte bestätigen Sie Ihre E-Mail indem Sie auf folgenden Link clicken:\n".$url."\nSollten Sie nicht diesen Antrag gestellt haben, ignorieren Sie bitte diese E.-Mail. Fuer Rückfragen stehen wir Ihnen gerne zur Verfügung.\n\nIhr ADFC Hamburg";
+      $nachricht = "Sie haben auf hamburg.adfc.de einen Tempo-30-Antrag gestellt. Bitte bestaetigen Sie Ihre E-Mail-Adresse, indem Sie auf folgenden Link Klicken.:\n".$url."\nSollten Sie diesen Antrag nicht gestellt haben, ignorieren Sie bitte diese E-Mail. Fuer Rueckfragen stehen wir Ihnen gerne zur Verfuegung.\n\nIhr ADFC Hamburg";
           mail($sql['email'], 'Ihr Tempo30 Antrag', $nachricht, $header);
      };
 } else {
