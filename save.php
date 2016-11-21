@@ -54,7 +54,7 @@ if ($res) {
        $url='https://tools.adfc-hamburg.de/tempo30-backend/master/validate.php?id='.$id."&secret=".$sql['secret'];
       $header = 'From: webmaster@tools.adfc-hamburg.de' . "\n" .
        'Reply-To: laeuft@hamburg.adfc.de' . "\n" .
-       'X-Mailer: PHP/' . phpversion();
+       'X-Mailer: PHP/' . phpversion(). "\n";
        $header .= "Content-Type: text/plain; charset = \"UTF-8\";\n";
        $header .= "Content-Transfer-Encoding: 8bit\n";
        $header .= "\n";
