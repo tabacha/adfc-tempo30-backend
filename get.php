@@ -10,7 +10,9 @@ $query="SELECT name, strasse, hausnr,  plz, email, ST_X(pos) AS lon, ".
        "ST_Y(pos) AS lat, newsletter, ".
        "saveanschrift, showinmap,  bezirk, mailchecked, lastchanged, ".
        "created,  antragdate, lastasked, antrag_strasse, mailcontact, ".
-       "adrchecked, status, antrag_in_confirm_date, id, secret ".
+       "adrchecked, status, belegwiderspruchabgabe, belegantragsabgabe, ".
+       "urteildatum, klagedatum, widerspruchantwort, widersprucheingang, ". 
+       "antwortaufantrag, lastasked, id, secret ".
        "FROM antraege  WHERE id=$1 and secret=$2;";
 
 $result = pg_prepare($con, "my_query", $query);
