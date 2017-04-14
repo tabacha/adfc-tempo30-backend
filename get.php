@@ -12,7 +12,7 @@ $query="SELECT name, strasse, hausnr,  plz, email, ST_X(pos) AS lon, ".
        "created,  antragdate, lastasked, antrag_strasse, mailcontact, ".
        "adrchecked, status, belegwiderspruchabgabe, belegantragsabgabe, ".
        "urteildatum, klagedatum, widerspruchantwort, widersprucheingang, ". 
-       "antwortaufantrag, lastasked, id, secret ".
+       "antwortaufantrag, lastasked, bezirk, id, secret ".
        "FROM antraege  WHERE id=$1 and secret=$2;";
 
 $result = pg_prepare($con, "my_query", $query);
