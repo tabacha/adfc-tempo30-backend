@@ -1,0 +1,47 @@
+Condition: mailcontact=true and mailchecked=true and automail=true and status=2 and antragdate < ( now() - interval '6' month )
+Intervall: 3 Month
+Subject: Dein Antrag auf verkehrsbeschränkende Maßnahmen (#${id})
+
+Liebe Antragstellerin, lieber Antragsteller,
+
+seit deiner Antragsstellung sind mindestens 6 Monate vergangen.  Hast du schon eine Antwort
+dein Antrag?
+
+Falls du auf deinen Antrag eine Antwort (Ablehung oder Zusage) erhalten hast, setze bitte auf der Webseite:
+
+https://tools.adfc-hamburg.de/s/t30/${id}/${secret}
+
+deinen Status entsprechend. Hier kannst du auch andere Daten ändern und diese automatische E-Mail abschalten.
+
+Falls Du Deinen Antrag noch keine Antwort erhalten hast ist die gesetzliche Abwartefrist von drei Monaten erheblich überschritten, ohne dass die Behörde ihnen einen Bescheid zugesandt hat.
+
+Es wird Zeit, den Druck auf die Behörde zu erhöhen und selbst noch einmal aktiv zu werden! Wir haben dazu auf der Webseite http://hamburg.adfc.de/?1581 unterschiedliche Wege dargestellt, was Du tun kannst. 
+
+Am weitreichendsten und wirkungsvollsten ist eine Untätigkeitsklage. Rechtsanwalt Felix Machts, der den ADFC im Rahmen der LÄUFT! Kampagne berät, sagt diesbezüglich im Interview ( http://hamburg.adfc.de/verkehr/themen-a-z/tempo-30/laeuft/wie-geht-es-weiter-nach-der-antragstellung/ ): „Verstreichen die 3 Monate, ohne dass der Antragsteller einen Bescheid erhält, besteht die Möglichkeit, eine sogenannte Untätigkeitsklage vor dem Verwaltungsgericht zu erheben.“
+
+
+Herzliche Grüße sendet Dir
+das Team der Kampagne LÄUFT! des ADFC Hamburg
+
+--
+
+Die nächste Erinnerung verschicken wir, sofern sich bei deinem Antrag nichts tut, nach 3 Monaten. Wenn du das nicht möchtest, schaltet bitte unter:
+
+https://tools.adfc-hamburg.de/s/t30/${id}/${secret}
+
+die automatischen E-mails ab.
+
+ADFC Landesverband Hamburg e.V.
+Koppel 34-36, 20099 Hamburg
+laeuft@hamburg.adfc.de
+
+Bankverbindung: 
+Empfänger: ADFC Hamburg 
+Bank: GLS Gemeinschaftsbank eG
+BLZ: 430 609 67  KtNr: 2029445600
+IBAN: DE80 4306 0967 2029 4456 00
+BIC: GENODEM1GLS
+Bitte geben Sie bei einer Spende im Verwendungszweck das Wort »Spende« und Ihre Adresse an.
+
+Daten ändern unter:
+https://tools.adfc-hamburg.de/s/t30/${id}/${secret}

@@ -1,0 +1,53 @@
+Condition: mailcontact=true and mailchecked=true and status=0 and created < ( now() - interval '3' Month )
+Intervall: 3 month
+Subject: Dein Antrag auf verkehrsbeschränkende Maßnahmen (#${id})
+
+Liebe Antragstellerin, lieber Antragsteller,
+
+vor einiger Zeit hast du auf unserer Webseite  einen Antrag auf verkehrsbeschränkende Maßnahmen vorbereitet.
+
+Uns interessiert, ob du den Antrag abgeschickt hast.
+
+Falls du den Antrag schon abgeschickt hast, setze bitte auf der Webseite:
+
+https://tools.adfc-hamburg.de/s/t30/${id}/${secret}
+
+deinen Status entsprechend. Hier kannst du auch andere Daten ändern und diese automatische E-Mail abschalten.
+
+Falls Du Deinen Antrag noch nicht abgeschickt hast:
+
+Wir helfen gerne, wenn Du noch Fragen hast, Unterstützung möchtest oder
+einfach unsicher bist, wie es genau weiter geht. 
+
+Mit Deinem Antrag sorgst Du nicht nur in Deiner eigenen Umgebung
+für mehr Sicherheit im Verkehr, für weniger Lärm, bessere Luft und
+eine lebenswertere Stadt. Durch die Vielzahl der Anträge verdeutlichen
+wir auch gemeinsam den klaren Willen vieler Menschen für eine
+Verkehrswende in dieser Stadt. Wir fordern mehr Raum und Sicherheit
+für Fußgänger, Radfahrer und ÖPNV.
+
+Herzliche Grüße sendet Dir
+das Team der Kampagne LÄUFT! des ADFC Hamburg
+
+--
+
+Die nächste Erinnerung verschicken wir nach 3 Monaten. Wenn du das nicht möchtest, schaltet bitte unter:
+
+https://tools.adfc-hamburg.de/s/t30/${id}/${secret}
+
+die automatischen E-mails ab.
+
+ADFC Landesverband Hamburg e.V.
+Koppel 34-36, 20099 Hamburg
+laeuft@hamburg.adfc.de
+
+Bankverbindung: 
+Empfänger: ADFC Hamburg 
+Bank: GLS Gemeinschaftsbank eG
+BLZ: 430 609 67  KtNr: 2029445600
+IBAN: DE80 4306 0967 2029 4456 00
+BIC: GENODEM1GLS
+Bitte geben Sie bei einer Spende im Verwendungszweck das Wort »Spende« und Ihre Adresse an.
+
+Daten ändern unter:
+https://tools.adfc-hamburg.de/s/t30/${id}/${secret}
