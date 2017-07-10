@@ -1,3 +1,4 @@
+TemplateId: 0
 Condition: mailcontact=true and mailchecked=true and automail=true and status=0 and created < ( now() - interval '14' day )
 Intervall: Once
 Subject: Dein Antrag auf verkehrsbeschränkende Maßnahmen (#${id})

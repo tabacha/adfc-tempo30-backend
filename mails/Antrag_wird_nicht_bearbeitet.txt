@@ -1,3 +1,4 @@
+TemplateId: 2
 Condition: mailcontact=true and mailchecked=true and automail=true and status=2 and antragdate < ( now() - interval '6' month )
 Intervall: 3 Month
 Subject: Dein Antrag auf verkehrsbeschränkende Maßnahmen (#${id})
